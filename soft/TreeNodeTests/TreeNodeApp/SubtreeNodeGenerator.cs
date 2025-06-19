@@ -1,36 +1,47 @@
 ﻿using PhyloTree;
 using PhyloTree.TreeBuilding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 
 namespace Examples
 {
     internal static class SubtreeNodeGenerator
     {
         static Random RandomNumberGenerator = new ThreadSafeRandom();
-        public static TreeNode GetSubtreeNode(string[] leafNames)
-        {          
-            int leafLength = leafNames.Length;
+        public static TreeNode GetSubtreeNode(string[] leafNames, double bifurcationProp = 0.0)
+        {   
+            int leafNumber = leafNames.Length;
             TreeNode initialTree = new TreeNode(null);
-            if (leafLength > 1)
+            int currentLeavesNumber = 1;
+            if (leafNumber > 1)
             {
                 initialTree.Children.Add(new TreeNode(initialTree));
                 initialTree.Children.Add(new TreeNode(initialTree));
+                currentLeavesNumber++;
+                while (currentLeavesNumber < leafNumber &&
+                    RandomNumberGenerator.NextDouble() < bifurcationProp)
+                {
+                    currentLeavesNumber++;
+                    initialTree.Children.Add(new TreeNode(initialTree));
+                }
             }
-            if (leafLength > 2)
+            if (leafNumber > 2)
             {                
                 List<TreeNode> leaves = new List<TreeNode>();
                 leaves.AddRange(initialTree.Children);
 
-                while (leaves.Count < leafLength)
+                while (leaves.Count < leafNumber)
                 {
                     int index = RandomNumberGenerator.Next(0, leaves.Count);
                     TreeNode selectedLeaf = leaves[index];
                     leaves.RemoveAt(index);
                     selectedLeaf.Children.Add(new TreeNode(selectedLeaf));
                     selectedLeaf.Children.Add(new TreeNode(selectedLeaf));
+                    currentLeavesNumber++;
+                    while (currentLeavesNumber < leafNumber &&
+                        RandomNumberGenerator.NextDouble() < bifurcationProp)
+                    {
+                        selectedLeaf.Children.Add(new TreeNode(selectedLeaf));
+                        currentLeavesNumber++;
+                    }
                     leaves.AddRange(selectedLeaf.Children);
                 }
             }

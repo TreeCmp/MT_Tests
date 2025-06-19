@@ -1,0 +1,23 @@
+﻿#NEXUS
+
+Begin Taxa;
+	Dimensions ntax=4;
+	TaxLabels
+		'0'
+		'2'
+		'3'
+		'1'
+		;
+End;
+
+Begin Trees;
+	Translate
+
+		1 '0',
+		2 '2',
+		3 '3',
+		4 '1'
+		;
+	Tree tree1 = (('1','2'),'3','4');;
+	Tree tree2 = (('1','3'),'2','4');;
+End;
