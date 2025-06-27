@@ -1,0 +1,1 @@
+Wymaga usunięcia każdego liścia z osobna co ręcznie dla dużego n jest pracochłonne lepiej zrobić to w oparciu o soft. 
