@@ -8,30 +8,30 @@ from pathlib import Path
 
 treeCmpApp = '../../soft/TreeCmp/exe/TreeCmp-2.0-b103.jar'
 
-# T_1,T_2 unrooted (n=17)
+# T_1,T_2 unrooted (n=41)
 #((('1','2','3','4','5','6','7','8','9','10'),('11',('12',('13','14','15',('16','17','18','19','20'))))),('21',(('22','23','24','25',('26','27',('28','29','30'))),'31')),('32',('33','34',('35',('36','37','38','39','40','41')))));
 #(((('1',('2','3')),('4','5','6','7','8','9')),('10','11','12',('13','14','15'),'16','17','18',('19','20'))),(('21','22'),'23','24',('25','26'),'27',('28','29',('30','31'))),(('32','33','34','35',('36','37'),'38',('39','40')),'41'));
-unrooted_trees_n17_Path = 'ut1_n_41a.newick'
-unrooted_trees_n17_PathRes = 'ut1_n_41a.out'
-subprocess.check_call(["java", "-jar", treeCmpApp, "-m", "-d", "qt", "-i", unrooted_trees_n17_Path, "-o", unrooted_trees_n17_PathRes])
+unrooted_trees_n41_Path = 'ut1_n_41a.newick'
+unrooted_trees_n41_PathRes = 'ut1_n_41a.out'
+subprocess.check_call(["java", "-jar", treeCmpApp, "-m", "-d", "qt", "-i", unrooted_trees_n41_Path, "-o", unrooted_trees_n41_PathRes])
 #d_qt(T_1,T_2) = 16208
 
 # T_1\^u, T_2\^u rooted at the former neighbour of u=3 (n=40)
 #('1','2',(('11',('12',('13','14','15',('16','17','18','19','20')))),(('21',(('22','23','24','25',('26','27',('28','29','30'))),'31')),('32',('33','34',('35',('36','37','38','39','40','41')))))),'4','5','6','7','8','9','10');
 #('2',('1',(('4','5','6','7','8','9'),(('10','11','12',('13','14','15'),'16','17','18',('19','20')),((('21','22'),'23','24',('25','26'),'27',('28','29',('30','31'))),(('32','33','34','35',('36','37'),'38',('39','40')),'41'))))));
 
-rooted_trees_del_u_n16_Path = 'rt1_del_u_n_40a.newick'
-rooted_trees_del_u_n16_PathRes = 'rt1_del_u_n_40a.out'
-subprocess.check_call(["java", "-jar", treeCmpApp, "-m", "-d", "tt", "-i", rooted_trees_del_u_n16_Path, "-o", rooted_trees_del_u_n16_PathRes])
+rooted_trees_del_u_n40_Path = 'rt1_del_u_n_40a.newick'
+rooted_trees_del_u_n40_PathRes = 'rt1_del_u_n_40a.out'
+subprocess.check_call(["java", "-jar", treeCmpApp, "-m", "-d", "tt", "-i", rooted_trees_del_u_n40_Path, "-o", rooted_trees_del_u_n40_PathRes])
 #d_tt(T_1\^u, T_2\^u) = 2872
 
 # T_1|L\u, T_2|L\u with deleted u=3 (n=40)
 
 #((('1','2','4','5','6','7','8','9','10'),('11',('12',('13','14','15',('16','17','18','19','20'))))),('21',(('22','23','24','25',('26','27',('28','29','30'))),'31')),('32',('33','34',('35',('36','37','38','39','40','41')))));
 # ('1','2',((('4','5','6','7','8','9'),('10','11','12',('13','14','15'),'16','17','18',('19','20'))),(('21','22'),'23','24',('25','26'),'27',('28','29',('30','31'))),(('32','33','34','35',('36','37'),'38',('39','40')),'41')));
-unrooted_trees_del_u_n16_Path = 'ut1_del_u_n_40a.newick'
-unrooted_trees_del_u_n16_PathRes = 'ut1_del_u_n_40a.out'
-subprocess.check_call(["java", "-jar", treeCmpApp, "-m", "-d", "qt", "-i", unrooted_trees_del_u_n16_Path, "-o", unrooted_trees_del_u_n16_PathRes])
+unrooted_trees_del_u_n40_Path = 'ut1_del_u_n_40a.newick'
+unrooted_trees_del_u_n40_PathRes = 'ut1_del_u_n_40a.out'
+subprocess.check_call(["java", "-jar", treeCmpApp, "-m", "-d", "qt", "-i", unrooted_trees_del_u_n40_Path, "-o", unrooted_trees_del_u_n40_PathRes])
 #d_qt(T_1|L\u, T_2|L\u) = 14470
 
 # 16208 = 1738 + 14470
